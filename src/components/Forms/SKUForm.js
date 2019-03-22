@@ -3,7 +3,8 @@ import React from "react";
 /** Element React Tabs */
 import {Form, Layout, Input, Button} from 'element-react'
 
-/** Import other components */
+/** Router with React Router Dom */
+import {withRouter} from 'react-router-dom'
 
 class SKUForm extends React.Component {
 	state = {
@@ -31,7 +32,8 @@ class SKUForm extends React.Component {
 		event.preventDefault()
 		this.refs.form.validate((valid)=>{
 			if(valid){
-				alert('Valido')
+				let path = '/tequila/'+this.state.form.sku
+				this.props.history.push(path)
 			}
 		})
 	}
@@ -62,4 +64,4 @@ class SKUForm extends React.Component {
 	}
 }
 
-export default SKUForm
+export default withRouter(SKUForm)

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 /* React-DOM Router */
-import {BrowserRouter as Router, Route, Link} from 'react-router-dom'
+import {BrowserRouter as Router, Route} from 'react-router-dom'
 
 /* Components */
 import NavBar from './components/NavBar'
