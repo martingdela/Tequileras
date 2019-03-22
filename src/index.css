@@ -1,5 +1,7 @@
 body {
-	font-family: 'Raleway', sans-serif
+	font-family: 'Open Sans', sans-serif;
+	background-color: #D3DCE6;
+	color: #324057;
   }
   .heading {
 	font-weight: 700;
@@ -7,3 +9,16 @@ body {
   .subheading {
 	font-weight: 300;
   }
+
+a {
+	text-decoration: none;
+}
+
+a::hover {
+	color: #D3DCE6
+}
+
+.Tabs {
+	background-color: #D3DCE6
+	;
+}

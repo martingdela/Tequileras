@@ -7,20 +7,13 @@ import { NavLink } from "react-router-dom"
 import { Menu as Nav } from 'element-react'
 
 class NavBar extends React.Component {
-	state = {
-
-	}
-
-	onSelect = () => {
-
-	}
-
 	render() {
 		return (
 			<>
-				<Nav theme="dark" defaultActive="1" className="el-Nav-demo" mode="horizontal">
+				<Nav theme="light" defaultActive="1" className="el-Nav-demo" mode="horizontal">
 					<NavLink to="/" className="nav-link">
-						<Nav.Item index="1">Tequila Maestro Dobel</Nav.Item>
+						<Nav.Item index="1"><img style={{width: "6em", height: "6em"}} src={process.env.PUBLIC_URL+"/img/brand-blackcolor.svg"} alt="Maestro Dobel" className="app-icon"/>
+					</Nav.Item>
 					</NavLink>
 					<Nav.SubMenu index="2" title="Acciones">
 						<NavLink to="/tequila/" className="nav-link">
