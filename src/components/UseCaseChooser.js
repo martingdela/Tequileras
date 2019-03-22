@@ -5,6 +5,7 @@ import {Tabs, Layout} from 'element-react'
 
 /** Import other components */
 import SKUForm from '../components/Forms/SKUForm'
+import TequileraForm from '../components/Forms/TequileraForm'
 
 class UseCase extends React.Component {
 	state = {
@@ -20,7 +21,7 @@ class UseCase extends React.Component {
 								<SKUForm/>
 							</Tabs.Pane>
 							<Tabs.Pane name="2" label="Conoce tu tequilera">
-							
+								<TequileraForm/>
 							</Tabs.Pane>
 							<Tabs.Pane name="3" label="Ve tu historial de botellas">
 							
