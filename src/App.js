@@ -10,6 +10,7 @@ import NavBar from './components/NavBar'
 import HomePage from './pages/HomePage'
 import UseCase1 from './pages/UseCase1'
 import UseCase3 from './pages/UseCase3'
+import UseCase4 from './pages/UseCase4'
 
 class App extends Component {
   render() {
@@ -27,6 +28,8 @@ class App extends Component {
         <Route path="/tequilera/:tequileraName" component={
           ({match}) => <UseCase3 tequileraName={match.params.tequileraName}/>
         }/>
+        {/** Use case 4 */}
+        <Route exact path="/historial" component={UseCase4}/>
         
       </Router>
     );
