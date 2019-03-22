@@ -1,26 +1,34 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+
+/* React-DOM Router */
+import {BrowserRouter as Router, Route, Link} from 'react-router-dom'
+
+/* Components */
+import NavBar from './components/NavBar'
+
+/** Pages */
+import HomePage from './pages/HomePage'
+import UseCase1 from './pages/UseCase1'
+import UseCase3 from './pages/UseCase3'
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <Router>
+        {/** Navigation Bar */}
+        <NavBar/>
+        {/** Homepage and use cases 2 and 3*/}
+        <Route exact path="/" component={HomePage}/>
+        {/** Extended use case 1 */}
+        <Route path="/tequila/:serieId" component={
+          ({match}) => <UseCase1 serieId={match.params.serieId}/>
+        }/>
+        {/** Use case 3 */}
+        <Route path="/tequilera/:tequileraName" component={
+          ({match}) => <UseCase3 tequileraName={match.params.tequileraName}/>
+        }/>
+        
+      </Router>
     );
   }
 }
