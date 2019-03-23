@@ -11,19 +11,21 @@ class NavBar extends React.Component {
 		return (
 			<>
 				<Nav theme="light" defaultActive="1" className="el-Nav-demo" mode="horizontal">
-					<NavLink to="/" className="nav-link">
-						<Nav.Item index="1"><img style={{width: "6em", height: "6em"}} src={process.env.PUBLIC_URL+"/img/brand-blackcolor.svg"} alt="Maestro Dobel" className="app-icon"/>
+
+					<Nav.Item index="1">
+						<NavLink to="/" className="nav-link">
+							<img style={{ width: "6em", height: "6em" }} src={process.env.PUBLIC_URL + "/img/brand-blackcolor.svg"} alt="Maestro Dobel" className="app-icon" />
+
+						</NavLink>
 					</Nav.Item>
-					</NavLink>
-					<Nav.SubMenu index="2" title="Acciones">
-						<NavLink to="/tequila/" className="nav-link">
-							<Nav.Item index="2-1">Validar mi botella</Nav.Item>
-						</NavLink>
+					<Nav.Item index="2">
 						<NavLink to="/historial" className="nav-link">
-							<Nav.Item index="2-2">Historial de botellas</Nav.Item>
-						</NavLink>
-					</Nav.SubMenu>
-					<Nav.Item index="3">Mi perfil</Nav.Item>
+							Historial
+							</NavLink>
+					</Nav.Item>
+					<Nav.Item index="3">
+						Mi perfil
+					</Nav.Item>
 				</Nav>
 
 			</>

@@ -24,7 +24,7 @@ class TequilaCard extends React.Component {
 		return (
 			<Layout.Row>
 				<Layout.Col span={8} offset={0}>
-					<Card style={{ height: "36rem", width: "16rem" }} bodyStyle={{ padding: 0 }}>
+					<Card style={{ height: "31rem", width: "16rem" }} bodyStyle={{ padding: 0 }}>
 						<img alt="Tequila" style={{ width: "16rem" }} src={imgSrc} className="image" />
 						<div style={{ padding: 14 }}>
 							<h3>{name}</h3>
@@ -32,10 +32,6 @@ class TequilaCard extends React.Component {
 							<p>Contenido: <b>{contenido}</b></p>
 							<p>Fabrica: <b>{fabrica}</b></p>
 							<p>Fecha de produccion: {fechaprod}</p>
-							<div className="bottom clearfix">
-
-								<Button type="primary" className="button">Añadir al historial</Button>
-							</div>
 						</div>
 					</Card>
 				</Layout.Col>

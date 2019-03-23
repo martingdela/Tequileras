@@ -23,9 +23,6 @@ class UseCase extends React.Component {
 							<Tabs.Pane name="2" label="Conoce tu tequilera">
 								<TequileraForm/>
 							</Tabs.Pane>
-							<Tabs.Pane name="3" label="Ve tu historial de botellas">
-							
-							</Tabs.Pane>
 					</Tabs>
 				</Layout.Col>
 			</Layout.Row>
