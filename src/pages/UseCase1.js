@@ -1,7 +1,8 @@
 import React from "react";
+import {Link} from 'react-router-dom'
 
 /** Element React elements */
-import { Layout, Loading, Card} from 'element-react'
+import { Layout, Loading, Card, Button} from 'element-react'
 
 /** Import Components */
 import Tequila from '../components/TequilaCard'
@@ -38,6 +39,9 @@ class UseCase extends React.Component {
 							<Card>
 								<h1>No se encontro esa botella</h1>
 								<p> Podrias ser victima de una botella falsa</p>
+								<Link to="/">
+									<Button type="text"> Regresar a la pagina principal</Button>
+								</Link>
 							</Card>
 							</>
 						) : (

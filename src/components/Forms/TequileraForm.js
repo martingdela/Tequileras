@@ -2,7 +2,7 @@
 import React from "react";
 
 /** Element React Tabs */
-import { Form, Layout, Input, Button, Select } from 'element-react'
+import { Form, Layout, Button, Select } from 'element-react'
 
 /** Router with React Router Dom */
 import { withRouter } from 'react-router-dom'
