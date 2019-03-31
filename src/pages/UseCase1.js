@@ -11,11 +11,12 @@ import Tequila from '../components/TequilaCard'
 import TequilaActions from '../actions/TequilaActions'
 import TequilaStore from '../stores/TequilaStore'
 
+
 class UseCase extends React.Component {
 	state = {
 		fullscreen: true,
 		tequilas: '',
-		found: true
+		found: false
 	}
 
 	onChange = () => {
@@ -25,8 +26,9 @@ class UseCase extends React.Component {
 	componentDidMount = () => {
 		//Add change listener
 		TequilaStore.addChangeListener(this.onChange)
-		// //Get the Tequila from store
-		TequilaActions.getTequila('XXXX-XXXX-XXXX-XXXX') 
+		 //Get the Tequila from store
+		let serieId = this.props.serieId
+		TequilaActions.getTequila(serieId) 
 		setTimeout(() => {
 			this.setState({ fullscreen: false })
 		}, 3000)
@@ -36,9 +38,17 @@ class UseCase extends React.Component {
 		TequilaStore.removeChangeListener(this.onChange)
 	}
 
+	emptyResponse = (response) => {
+		for(var key in response) {
+			if(response.hasOwnProperty(key))
+				return false;
+		}
+		return true;
+	}
+
 	render() {
-		const { fullscreen, found, tequilas } = this.state
-		console.log(tequilas)
+		const { fullscreen, tequilas, found } = this.state
+		// console.log(tequilas.name == undefined)
 		return (
 			<>
 				{fullscreen && <Loading fullscreen={true} />}
@@ -51,7 +61,7 @@ class UseCase extends React.Component {
 						}>
 					
 					<Layout.Row span="24" type="flex" justify="center">
-						{!found ? (
+						{(tequilas.name === undefined) ? (
 							<>
 							<Card>
 								<h1>No se encontro esa botella</h1>
@@ -62,7 +72,7 @@ class UseCase extends React.Component {
 							</Card>
 							</>
 						) : (
-							<Tequila />
+							<Tequila tequila={tequilas}/>
 						)}
 						</Layout.Row>
 						</Card>

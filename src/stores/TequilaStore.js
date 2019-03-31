@@ -18,7 +18,7 @@ var TequilaStore = ObjectAssign({}, EventEmitter.prototype, {
 		this.removeListener(CHANGE_EVENT,cb)
 	},
 	getTequila: function() {
-		return _store
+		return _store.tequila
 	},
 	clearTequila : function(){
 		_store.tequila = {}
@@ -34,7 +34,6 @@ AppDispatcher.register(function(payload){
 			break
 		
 		case AppConstants.RECEIVE_TEQUILA:
-			alert(action.response)
 			_store.tequila = action.response
 			TequilaStore.emit(CHANGE_EVENT)
 			break

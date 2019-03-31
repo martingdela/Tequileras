@@ -15,7 +15,6 @@ module.exports = {
 		for(var i = 0 ; i < obj.tequileras.length; i++){
 			for(var x = 0; x < obj.tequileras[i].tequilas.length; x++){
 				if(obj.tequileras[i].tequilas[x].sku === sku){
-					
 					TequilaServerActions.receiveTequila(obj.tequileras[i].tequilas[x])
 				}
 			}

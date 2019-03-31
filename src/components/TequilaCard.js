@@ -14,7 +14,16 @@ class TequilaCard extends React.Component {
 	}
 
 	componentDidMount = () => {
-
+		let {tequila} = this.props
+		if(tequila !== undefined){
+			this.setState({
+				name: tequila.name,
+				tequilera: tequila.marca,
+				contenido: tequila.contenido,
+				fabrica: tequila.fabrica,
+				fechaprod: tequila.fechaProduccion
+			})
+		}
 	}
 
 	render() {
@@ -24,7 +33,7 @@ class TequilaCard extends React.Component {
 		return (
 			<Layout.Row>
 				<Layout.Col span={8} offset={0}>
-					<Card style={{ height: "31rem", width: "16rem" }} bodyStyle={{ padding: 0 }}>
+					<Card style={{ height: "35rem", width: "16rem" }} bodyStyle={{ padding: 0 }}>
 						<img alt="Tequila" style={{ width: "16rem" }} src={imgSrc} className="image" />
 						<div style={{ padding: 14 }}>
 							<h3>{name}</h3>
