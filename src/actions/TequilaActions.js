@@ -9,5 +9,12 @@ module.exports = {
 		})
 
 		TequilaAPI.getTequila(sku)
+	},
+	addHistorial: function(tequila,username){
+		AppDispatcher.handleGetHistorialAction({
+			actionType: TequilaConstants.ADD_HISTORIAL
+		})
+
+		TequilaAPI.addTequilaToHistorial(tequila,username)
 	}
 }

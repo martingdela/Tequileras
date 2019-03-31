@@ -23,9 +23,12 @@ module.exports = {
 	getHistorial : function(){
 		return obj.historial
 	},
-	addTequilaToHistorial : function(tequila){
+	addTequilaToHistorial : function(tequila,username){
 		tequila.fechaCompra = new Date().toUTCString()
+		tequila.username = username
 		obj.historial.push(tequila)
+		console.log(obj)
+		TequilaServerActions.receiveAddTequilaToHistorialResponse(true)
 	}
 }
 

@@ -7,5 +7,11 @@ module.exports = {
 			actionType: AppConstants.RECEIVE_TEQUILA,
 			response: response
 		})
+	},
+	receiveAddTequilaToHistorialResponse : function(response) {
+		AppDispatcher.receiveAddTequilaToHistorialResponse({
+			actionType: AppConstants.RECEIVE_HISTORIAL,
+			response: response
+		})
 	}
 }

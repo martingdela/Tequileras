@@ -2,7 +2,7 @@ import React from "react";
 import {Link} from 'react-router-dom'
 
 /** Element React elements */
-import { Layout, Loading, Card, Button} from 'element-react'
+import { Layout, Loading, Card, Button, Notification} from 'element-react'
 
 /** Import Components */
 import Tequila from '../components/TequilaCard'
@@ -28,22 +28,24 @@ class UseCase extends React.Component {
 		TequilaStore.addChangeListener(this.onChange)
 		 //Get the Tequila from store
 		let serieId = this.props.serieId
-		TequilaActions.getTequila(serieId) 
+		TequilaActions.getTequila(serieId)
+		
 		setTimeout(() => {
 			this.setState({ fullscreen: false })
+			let username = this.props.username
+			TequilaActions.addHistorial(this.state.tequilas,username)
+			if(this.state.tequilas.name !== undefined){
+				Notification({
+					title: "Exito",
+					message: "Botella añadida al historial",
+					type: "success"
+				})
+			}
 		}, 3000)
 	}
 
 	componentWillUnmount() {
 		TequilaStore.removeChangeListener(this.onChange)
-	}
-
-	emptyResponse = (response) => {
-		for(var key in response) {
-			if(response.hasOwnProperty(key))
-				return false;
-		}
-		return true;
 	}
 
 	render() {
