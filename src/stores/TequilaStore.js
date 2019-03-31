@@ -1,57 +1,83 @@
-var AppDispatcher = require('../dispatchers/TequilaDispatcher')
+import { EventEmitter } from "events"
+import TequilaDispatcher from "../dispatchers/TequilaDispatcher";
 var TequilaConstants = require('../constants/index')
-var ObjectAssign = require('object-assign')
-var EventEmitter = require('events').EventEmitter;
 
 var CHANGE_EVENT = 'change'
 
-var _store = {
-	historial =[],
-	tequila = {},
-	editing: true
+class TequilaStore extends EventEmitter {
+	constructor() {
+		// var data = require('../utils/response.json');
+		// for(var i = 0; i<data.length; i++){
+		// 	var obj = data[i]
+		// 	for(var j = 0; j<3; j++){
+		// 		this.tequila.push(obj.tequila);
+		// 	}
+		// }
+		super();
+		this.tequila = [
+			{
+				marca: "Dobel",
+				submarca: "Maestro",
+				fechaCompra: "2019-20-21",
+				fechaFabricacion: "2019-1-1",
+				tipo: "Tequila"
+			},
+			{
+				marca: "Otro Dobel",
+				submarca: "Menos Maestro",
+				fechaCompra: "2019-20-21",
+				fechaFabricacion: "2018-01-01",
+				tipo: "Tequila"
+			}
+		];
+		this.historial = [
+			{
+				marca: "Dobel",
+				submarca: "Maestro",
+				fechaCompra: "2019-20-21",
+				fechaFabricacion: "2019-1-1",
+				tipo: "Tequila"
+			},
+			{
+				marca: "Otro Dobel",
+				submarca: "Menos Maestro",
+				fechaCompra: "2019-20-21",
+				fechaFabricacion: "2018-01-01",
+				tipo: "Tequila"
+			}
+		];
+	}
+
+	createTequila(tequila) {
+		this.tequila.push(tequila);
+		this.emit.change();
+	}
+
+	getTequila() {
+		return this.tequila;
+	}
+
+	getHistorial(){
+		return this.historial;
+	}
+
+	handleActions(action) {
+		switch (action.actionType) {
+			case TequilaConstants.GET_TEQUILA:
+				this.getTequila();
+				break
+			case TequilaConstants.GET_HISTORIAL:
+				this.getHistorial();
+				break
+			case TequilaConstants.ADD_TEQUILA:
+				this.createTequila(action.text);
+				break
+			default:
+				TequilaStore.emit(CHANGE_EVENT)
+		}
+	}
 }
 
-var TequilaStore = ObjectAssign({}, EventEmitter.prototype, {
-	addChangeListener: function (cb) {
-		this.on(CHANGE_EVENT, cb)
-	},
-	removeChangeListener: function (cb) {
-		this.on(CHANGE_event, cb)
-	},
-	getHistorial: function () {
-		return _store.historial
-	},
-	getTequila: function () {
-		return _store.tequila
-	}
-})
-
-AppDispatcher.register(function (payload) {
-	var action = payload.action
-	switch (action.actionType) {
-		case TequilaConstants.GET_TEQUILA:
-			_store.editing = true
-			TequilaStore.emit(CHANGE_EVENT)
-			break
-		case TequilaConstants.GET_HISTORIAL:
-			_store.editing = true
-			TequilaStore.emit(CHANGE_EVENT)
-			break
-		case TequilaConstants.ADD_TEQUILA:
-			_store.editing = true
-			TequilaStore.emit(CHANGE_EVENT)
-			break
-		case TequilaConstants.GET_TEQUILA_RESPONSE:
-				_store.tequila = action.response.tequila
-			TequilaStore.emit(CHANGE_EVENT)
-			break
-		case TequilaConstants.GET_HISTORIAL_RESPONSE:
-				_store.historial = action.response.historial
-			TequilaStore.emit(CHANGE_EVENT)
-			break
-		default:
-			TequilaStore.emit(CHANGE_EVENT)
-	}
-})
-
-module.exports = TequilaStore
+const tequilaStore = new TequilaStore;
+TequilaDispatcher.register(tequilaStore.handleActions.bind(tequilaStore));
+export default tequilaStore;

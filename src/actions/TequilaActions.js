@@ -7,7 +7,6 @@ module.exports = {
 		TequilaDispatcher.handleGetAction({
 			actionType: TequilaConstants.GET_TEQUILA
 		})
-
 		TequilaAPI.getTequila(sku)
 	},
 	addTequilaToHistorial: function(tequila) {

@@ -1,13 +1,16 @@
 import React from "react";
-import { Link } from 'react-router-dom'
-
+import { Link } from 'react-router-dom';
+//import jData from '../utils/response.json'
+import TequilaStore from "../stores/TequilaStore";
 /** Element React elements */
 import { Layout, Loading, Card, Button, Table, Dialog } from 'element-react'
 
 /** Components */
 import TequilaCard from "../components/TequilaCard";
+import tequilaStore from "../stores/TequilaStore";
 
 class UseCase extends React.Component {
+
 	state = {
 		fullscreen: true,
 		dialogVisible: false,
@@ -27,19 +30,29 @@ class UseCase extends React.Component {
 				}
 			}
 		],
-		data: [{
-			marca: "Dobel",
-			submarca: "Maestro",
-			fechaCompra: "2019-20-21",
-			fechaFabricacion: "2019-1-1",
-			tipo: "Tequila"
-		}, {
-			marca: "Otro Dobel",
-			submarca: "Menos Maestro",
-			fechaCompra: "2019-20-21",
-			fechaFabricacion: "2018-01-01",
-			tipo: "Tequila"
-		}],
+		data: TequilaStore.getTequila()
+		// [{
+		// 	marca: "Dobel",
+		// 	submarca: "Maestro",
+		// 	fechaCompra: "2019-20-21",
+		// 	fechaFabricacion: "2019-1-1",
+		// 	tipo: "Tequila"
+		// }, {
+		// 	marca: "Otro Dobel",
+		// 	submarca: "Menos Maestro",
+		// 	fechaCompra: "2019-20-21",
+		// 	fechaFabricacion: "2018-01-01",
+		// 	tipo: "Tequila"
+		// }]
+		,
+	}
+
+	componentWillMount(){
+		tequilaStore.on("change", ()=>{
+			this.setState({
+				data: tequilaStore.getTequila(),
+			})
+		})
 	}
 
 	componentDidMount = () => {
