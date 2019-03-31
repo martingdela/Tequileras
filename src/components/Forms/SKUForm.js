@@ -10,6 +10,8 @@ class SKUForm extends React.Component {
 	state = {
 		form : {
 			sku: 'xxxx-xxxx-xxxx-xxxx',
+			username: '',
+			password: ''
 		},
 		rules: {
 			sku: [
@@ -24,7 +26,21 @@ class SKUForm extends React.Component {
 					}
 				}}
 			
+			], username: [
+				{required: true, message: 'Favor de ingresar el nombre de usuario', trigger: 'blur'}
+			], password: [
+				{required: true, message: 'Ingrese su password', trigger: 'blur'},
+				{validator: (rule,value,callback) => {
+					if(value === ''){
+						callback(new Error('Porfavor, ingrese su password'))
+					} else if (! /^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})/.test(value)){
+						callback(new Error('Tu contraseña no contiene el formato necesario (> 1 mayuscula, > 1 miniscula, 1> numero, 6 > caracteres'))
+					} else {
+						callback()
+					}
+				}}
 			]
+
 		}
 	}
 
@@ -32,7 +48,7 @@ class SKUForm extends React.Component {
 		event.preventDefault()
 		this.refs.form.validate((valid)=>{
 			if(valid){
-				let path = '/tequila/'+this.state.form.sku
+				let path = '/tequila/'+this.state.form.sku+'/'+this.state.form.username
 				this.props.history.push(path)
 			}
 		})
@@ -54,9 +70,16 @@ class SKUForm extends React.Component {
 						<Form.Item prop="sku" label="SKU">
 							<Input value={this.state.form.sku} onChange={this.onChange.bind(this,'sku')}></Input>
 						</Form.Item>
+						<Form.Item prop="username" label="Nombre de Usuario">
+							<Input value={this.state.form.username} onChange={this.onChange.bind(this,'username')}></Input>
+						</Form.Item>
+						<Form.Item prop="password" label="Contraseña">
+							<Input type={"password"} value={this.state.form.password} onChange={this.onChange.bind(this,'password')}></Input>
+						</Form.Item>
 						<Form.Item>
 							<Button type="primary" onClick={this.handleSubmit}> Submit </Button>
 						</Form.Item>
+						
 					</Form>
 				</Layout.Col>
 			</Layout.Row>

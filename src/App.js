@@ -21,8 +21,8 @@ class App extends Component {
         {/** Homepage and use cases 2 and 3*/}
         <Route exact path="/" component={HomePage}/>
         {/** Extended use case 1 */}
-        <Route path="/tequila/:serieId" component={
-          ({match}) => <UseCase1 serieId={match.params.serieId}/>
+        <Route path="/tequila/:serieId/:username" component={
+          ({match}) => <UseCase1 serieId={match.params.serieId} username={match.params.username}/>
         }/>
         {/** Use case 3 */}
         <Route path="/tequilera/:tequileraName" component={
