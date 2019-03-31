@@ -16,5 +16,12 @@ module.exports = {
 		})
 
 		TequilaAPI.addTequilaToHistorial(tequila,username)
+	},
+	getTequileras: function() {
+		AppDispatcher.handleGetTequileras({
+			actionType: TequilaConstants.GET_TEQUILERAS
+		})
+
+		TequilaAPI.getTequileras()
 	}
 }

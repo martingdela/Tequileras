@@ -13,5 +13,11 @@ module.exports = {
 			actionType: AppConstants.RECEIVE_HISTORIAL,
 			response: response
 		})
+	},
+	receiveTequileras: function(response) {
+		AppDispatcher.receiveTequileras({
+			actionType: AppConstants.RECEIVE_TEQUILERAS,
+			response: response
+		})
 	}
 }

@@ -1,22 +1,30 @@
 import React from "react";
 
 /* Element React components */
-import { Layout, Carousel } from 'element-react'
+import { Layout, Carousel, Loading } from 'element-react'
 
 /* Import the bottle chooser component */
 import UseCaseChooser from '../components/UseCaseChooser'
 
 class HomePage extends React.Component {
 	state = {
-		images: ['DOBEL.png', 'humito.png', 'blanco.png', 'Reposado-.png', 'rojo.png']
+		images: ['DOBEL.png', 'humito.png', 'blanco.png', 'Reposado-.png', 'rojo.png'],
+		fullscreen: true,
+	}
+
+	componentDidMount = () => {
+		setTimeout(()=>{
+			this.setState({ fullscreen: false })
+		},3000)
 	}
 
 	render() {
 
-		const { images } = this.state
+		const { images, fullscreen } = this.state
 
 		return (
 			<>
+			{fullscreen && <Loading fullscreen={true}/>}
 				<Layout.Row gutter="10">
 					<Layout.Col span="24">
 						<div style={{ textAlign: "center" }} className="grid-content bg-purple">

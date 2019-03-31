@@ -36,4 +36,22 @@ AppDispatcher.receiveAddTequilaToHistorialResponse = function(action){
 	})
 }
 
+/** 
+ *  Get Tequileras
+ */
+
+AppDispatcher.handleGetTequileras = function(action) {
+	this.dispatch({
+		source: "GET_TEQUILERAS",
+		action: action
+	})
+}
+
+AppDispatcher.receiveTequileras = function(action){ 
+	this.dispatch({
+		source: "RECEIVE_TEQUILERAS",
+		action: action
+	})
+}
+
 module.exports = AppDispatcher

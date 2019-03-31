@@ -21,7 +21,7 @@ class UseCase extends React.Component {
 								<SKUForm/>
 							</Tabs.Pane>
 							<Tabs.Pane name="2" label="Conoce tu tequilera">
-								<TequileraForm/>
+								<TequileraForm tequileras={this.props.tequileras}/>
 							</Tabs.Pane>
 					</Tabs>
 				</Layout.Col>

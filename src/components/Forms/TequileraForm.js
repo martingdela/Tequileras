@@ -7,12 +7,30 @@ import { Form, Layout, Button, Select } from 'element-react'
 /** Router with React Router Dom */
 import { withRouter } from 'react-router-dom'
 
+
+/** Import FLUX */
+import TequilaActions from '../../actions/TequilaActions'
+import TequilaStore from '../../stores/TequilaStore'
+
 class TequileraForm extends React.Component {
 	state = {
 		form: {
 			tequilera: '',
 			tequileras: ['dobel','superdobel','megadobel']
 		}
+	}
+
+	componentDidMount = () => {
+		TequilaStore.addChangeListener(this.handleChange)
+		TequilaActions.getTequileras()
+	}
+
+	handleChange = () => {
+		let form = Object.assign({}, this.state.form)
+		form.tequileras = TequilaStore.getTequileras()
+		this.setState({
+			form
+		})
 	}
 
 	handleSubmit = event => {

@@ -11,6 +11,14 @@ module.exports = {
 			return obj.tequileras[i].marca == marca ? obj.tequileras[i] : {}
 		}
 	},
+	getTequileras : function(){
+		var tequileras = []
+		for(var i = 0; i < obj.tequileras.length; i++){
+			tequileras.push(obj.tequileras[i].marca)
+		}
+		console.log(tequileras)
+		TequilaServerActions.receiveTequileras(tequileras)
+	},
 	getTequila : function(sku){
 		for(var i = 0 ; i < obj.tequileras.length; i++){
 			for(var x = 0; x < obj.tequileras[i].tequilas.length; x++){
