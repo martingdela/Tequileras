@@ -1,56 +1,43 @@
-var AppDispatcher = require('../dispatchers/TequilaDispatcher')
-var TequilaConstants = require('../constants/index')
-var ObjectAssign = require('object-assign')
+var AppDispatcher = require('../dispatchers/AppDispatcher');
+var AppConstants = require('../constants/TequilaConstants');
+var ObjectAssign = require('object-assign');
 var EventEmitter = require('events').EventEmitter;
 
 var CHANGE_EVENT = 'change'
 
 var _store = {
-	historial =[],
-	tequila = {},
-	editing: true
+	tequila : {},
+	editing: false
 }
 
 var TequilaStore = ObjectAssign({}, EventEmitter.prototype, {
-	addChangeListener: function (cb) {
-		this.on(CHANGE_EVENT, cb)
+	addChangeListener : function(cb){
+		this.on(CHANGE_EVENT,cb)
 	},
-	removeChangeListener: function (cb) {
-		this.on(CHANGE_event, cb)
+	removeChangeListener: function(cb){
+		this.removeListener(CHANGE_EVENT,cb)
 	},
-	getHistorial: function () {
-		return _store.historial
+	getTequila: function() {
+		return _store
 	},
-	getTequila: function () {
-		return _store.tequila
+	clearTequila : function(){
+		_store.tequila = {}
 	}
 })
 
-AppDispatcher.register(function (payload) {
+AppDispatcher.register(function(payload){
 	var action = payload.action
-	switch (action.actionType) {
-		case TequilaConstants.GET_TEQUILA:
+	switch(action.actionType) {
+		case AppConstants.GET_TEQUILA:
 			_store.editing = true
 			TequilaStore.emit(CHANGE_EVENT)
 			break
-		case TequilaConstants.GET_HISTORIAL:
-			_store.editing = true
+		
+		case AppConstants.RECEIVE_TEQUILA:
+			alert(action.response)
+			_store.tequila = action.response
 			TequilaStore.emit(CHANGE_EVENT)
 			break
-		case TequilaConstants.ADD_TEQUILA:
-			_store.editing = true
-			TequilaStore.emit(CHANGE_EVENT)
-			break
-		case TequilaConstants.GET_TEQUILA_RESPONSE:
-				_store.tequila = action.response.tequila
-			TequilaStore.emit(CHANGE_EVENT)
-			break
-		case TequilaConstants.GET_HISTORIAL_RESPONSE:
-				_store.historial = action.response.historial
-			TequilaStore.emit(CHANGE_EVENT)
-			break
-		default:
-			TequilaStore.emit(CHANGE_EVENT)
 	}
 })
 

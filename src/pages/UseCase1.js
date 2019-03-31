@@ -7,6 +7,10 @@ import { Layout, Loading, Card, Button} from 'element-react'
 /** Import Components */
 import Tequila from '../components/TequilaCard'
 
+/** Import FLUX */
+import TequilaActions from '../actions/TequilaActions'
+import TequilaStore from '../stores/TequilaStore'
+
 class UseCase extends React.Component {
 	state = {
 		fullscreen: true,
@@ -14,14 +18,27 @@ class UseCase extends React.Component {
 		found: true
 	}
 
+	onChange = () => {
+		this.setState({tequilas: TequilaStore.getTequila()})
+	}
+
 	componentDidMount = () => {
+		//Add change listener
+		TequilaStore.addChangeListener(this.onChange)
+		// //Get the Tequila from store
+		TequilaActions.getTequila('XXXX-XXXX-XXXX-XXXX') 
 		setTimeout(() => {
 			this.setState({ fullscreen: false })
 		}, 3000)
 	}
 
+	componentWillUnmount() {
+		TequilaStore.removeChangeListener(this.onChange)
+	}
+
 	render() {
-		const { fullscreen, found } = this.state
+		const { fullscreen, found, tequilas } = this.state
+		console.log(tequilas)
 		return (
 			<>
 				{fullscreen && <Loading fullscreen={true} />}

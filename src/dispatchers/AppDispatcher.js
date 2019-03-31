@@ -1,16 +1,16 @@
 var Dispatcher = require('flux').Dispatcher
 var AppDispatcher = new Dispatcher()
 
-AppDispatcher.handleGetAction = function(action) {
+AppDispatcher.handleViewAction = function(action) {
 	this.dispatch({
-		source: 'GET_TEQUILERA',
+		source: "VIEW_ACTION",
 		action: action
 	})
 }
 
 AppDispatcher.handleServerAction = function(action) {
 	this.dispatch({
-		source: 'GET_TEQUILERA_RESPONSE',
+		source: "SERVER_ACTION",
 		action: action
 	})
 }

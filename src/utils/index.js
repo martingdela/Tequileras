@@ -2,8 +2,8 @@
 var fs = require('fs')
 var obj = require('./response.json')
 /** Flux stuff */
-var TequilaActions = require('../actions/TequilaActions')
-var TequileraActions = require('../actions/TequileraActions')
+var TequilaServerActions = require('../actions/TequilaServerActions') 
+// var TequileraActions = require('../actions/TequileraActions')
 
 module.exports = {
 	getTequilera : function(marca) {
@@ -15,7 +15,8 @@ module.exports = {
 		for(var i = 0 ; i < obj.tequileras.length; i++){
 			for(var x = 0; x < obj.tequileras[i].tequilas.length; x++){
 				if(obj.tequileras[i].tequilas[x].sku === sku){
-					return obj.tequileras[i].tequilas[x]
+					
+					TequilaServerActions.receiveTequila(obj.tequileras[i].tequilas[x])
 				}
 			}
 		}
