@@ -60,7 +60,7 @@ AppDispatcher.register(function(payload){
 			break
 		
 		case AppConstants.RECEIVE_HISTORIAL:
-			_store.successhist = action.response
+			_store.historial = action.response
 			TequilaStore.emit(CHANGE_EVENT)
 			break
 

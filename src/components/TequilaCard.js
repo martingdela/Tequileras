@@ -13,8 +13,9 @@ class TequilaCard extends React.Component {
 		fechaprod: '2009-02-26 12:22:00'
 	}
 
-	componentDidMount = () => {
+	componentWillReceiveProps = () => {
 		let {tequila} = this.props
+		console.log(tequila)
 		if(tequila !== undefined){
 			this.setState({
 				name: tequila.name,

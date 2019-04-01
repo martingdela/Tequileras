@@ -7,21 +7,27 @@ import { Layout, Loading, Card, Button, Table, Dialog } from 'element-react'
 /** Components */
 import TequilaCard from "../components/TequilaCard";
 
+/** Import FLUX */
+import TequilaActions from '../actions/TequilaActions'
+import TequilaStore from '../stores/TequilaStore'
+
+
 class UseCase extends React.Component {
 	state = {
 		fullscreen: true,
+		selectedTequila: {},
 		dialogVisible: false,
 		columns: [
 			{ label: "Marca", prop: "marca", width: 180, sortable: true },
 			{ label: "Submarca", prop: "submarca", width: 180, sortable: true },
 			{ label: "Fecha de Compra", prop: "fechaCompra", width: 180, sortable: true },
-			{ label: "Fecha de Fabricacion", prop: "fechaFabricacion", width: 180, sortable: true },
+			{ label: "Fecha de Fabricacion", prop: "fechaProduccion", width: 180, sortable: true },
 			{ label: "Tipo", prop: "tipo", width: 180, sortable: true },
 			{
 				label: "Operaciones", render: function () {
 					return (
 						<span>
-							<Button plain={true} type="info" size="small">Ver</Button>
+							<Button plain={true} onClick={this.onCurrentChange} type="info" size="small">Ver</Button>
 						</span>
 					)
 				}
@@ -43,13 +49,20 @@ class UseCase extends React.Component {
 	}
 
 	componentDidMount = () => {
+		TequilaStore.addChangeListener(this.onChange)
+		this.setState({data: TequilaStore.getHistorial()})
+		this.setState({selectedTequila: TequilaStore.getHistorial()[0]})
 		setTimeout(() => {
 			this.setState({ fullscreen: false })
 		}, 3000)
 	}
 
+	onChange = () => {
+		this.setState({data: TequilaStore.getHistorial()})
+	}
+
 	onCurrentChange = item => {
-		this.setState({ dialogVisible: true })
+		this.setState({ dialogVisible: true, selectedTequila: item })
 	}
 
 	render() {
@@ -97,7 +110,7 @@ class UseCase extends React.Component {
 									lockScroll={false}
 								>
 									<Dialog.Body>
-										<TequilaCard/>
+										<TequilaCard tequila={this.state.selectedTequila}/>
 									</Dialog.Body>
 									<Dialog.Footer className="dialog-footer">
 										<Button onClick={() => this.setState({ dialogVisible: false })}>OK</Button>

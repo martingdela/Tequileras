@@ -8,9 +8,9 @@
 			"fundacion": "2005",
 			"direccion" : "Algun lugar de Guadalajara",
 			"tequilas" : [
-				{"name": "Casa Noble Roja", "contenido": "500ml","fabrica":"CN-1212222-A","fechaCompra":"2019-01-21 12:22:22", "fechaProduccion": "2018-01-21 12:22:22", "tipo":"Tequila" , "sku": "XXXX-XXXX-XXXX-XXXX", "marca": "Casa Noble"},
-				{"name": "Casa Noble Blanca", "contenido": "300ml","fabrica":"CN-1212222-B","fechaCompra":"2019-01-20 12:22:22", "fechaProduccion": "2018-01-21 12:22:22", "tipo":"Tequila", "sku": "YYYY-YYYY-YYYY-YYYY", "marca": "Casa Noble"},
-				{"name": "Casa Noble Negra", "contenido": "200ml","fabrica":"CN-1212222-C","fechaCompra":"2019-01-19 12:22:22", "fechaProduccion": "2018-01-21 12:22:22", "tipo":"Tequila", "sku": "ZZZZ-ZZZZ-ZZZZ-ZZZZ", "marca": "Casa Noble"}
+				{"name": "Casa Noble Roja", "submarca": "Volcan de Tequila","contenido": "500ml","fabrica":"CN-1212222-A","fechaCompra":"2019-01-21 12:22:22", "fechaProduccion": "2018-01-21 12:22:22", "tipo":"Tequila" , "sku": "XXXX-XXXX-XXXX-XXXX", "marca": "Casa Noble"},
+				{"name": "Casa Noble Blanca", "submarca": "Volcan de Tequila","contenido": "300ml","fabrica":"CN-1212222-B","fechaCompra":"2019-01-20 12:22:22", "fechaProduccion": "2018-01-21 12:22:22", "tipo":"Tequila", "sku": "YYYY-YYYY-YYYY-YYYY", "marca": "Casa Noble"},
+				{"name": "Casa Noble Negra", "submarca": "Volcan de Tequila","contenido": "200ml","fabrica":"CN-1212222-C","fechaCompra":"2019-01-19 12:22:22", "fechaProduccion": "2018-01-21 12:22:22", "tipo":"Tequila", "sku": "ZZZZ-ZZZZ-ZZZZ-ZZZZ", "marca": "Casa Noble"}
 			]
 		},{
 			"marca" : "San José del Refugio",
