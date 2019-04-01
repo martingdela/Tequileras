@@ -50,7 +50,8 @@ AppDispatcher.register(function(payload){
 			break
 		
 		case AppConstants.RECEIVE_TEQUILA:
-			_store.tequila = action.response
+			_store.tequila = action.response.body
+			console.log(_store.tequila)
 			TequilaStore.emit(CHANGE_EVENT)
 			break
 		

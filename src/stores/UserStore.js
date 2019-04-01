@@ -31,8 +31,7 @@ AppDispatcher.register(function(payload){
 			UserStore.emit(CHANGE_EVENT)
 			break
 		case AppConstants.LOGIN_USER_RESPONSE:
-		alert(action.response)
-			_store.usuario = action.response
+			_store.usuario = action.response.body.found
 			UserStore.emit(CHANGE_EVENT)
 			break
 	}

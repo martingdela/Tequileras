@@ -1,54 +1,64 @@
 /** Simulator */
-var fs = require('browserify-fs')
 var obj = require('./response.json')
 var us = require('./userresponse.json')
+const superagent = require('superagent')
 /** Flux stuff */
 var TequilaServerActions = require('../actions/TequilaServerActions')
 var UserServerActions = require('../actions/UserServerActions')
 
 module.exports = {
 	getTequilera: function (marca) {
-		for (var i = 0; i < obj.tequileras.length; i++) {
-			if (obj.tequileras[i].marca == marca) {
-				TequilaServerActions.receiveTequilera(obj.tequileras[i])
-			}
-		}
-
+		superagent.get('http://127.0.0.1:6969/getTequilera')
+		.withCredentials()
+		.query({marca})
+		.end((err,res)=>{
+			if(err) { return console.log(err) }
+			TequilaServerActions.receiveTequilera(res.body)
+		})
 	},
 	getTequileras: function () {
-		var tequileras = []
-		for (var i = 0; i < obj.tequileras.length; i++) {
-			tequileras.push(obj.tequileras[i].marca)
-		}
-
-		TequilaServerActions.receiveTequileras(tequileras)
+		superagent.get('http://127.0.0.1:6969/getTequileras')
+		.withCredentials()
+		.end((err,res)=>{
+			if(err) { return console.log(err) }
+			TequilaServerActions.receiveTequileras(res.body)
+		})
 	},
 	getTequila: function (sku) {
-		for (var i = 0; i < obj.tequileras.length; i++) {
-			for (var x = 0; x < obj.tequileras[i].tequilas.length; x++) {
-				if (obj.tequileras[i].tequilas[x].sku === sku) {
-					TequilaServerActions.receiveTequila(obj.tequileras[i].tequilas[x])
-				}
-			}
-		}
+		superagent.get('http://127.0.0.1:6969/getTequila')
+		.withCredentials()
+		.query({sku: sku})
+		.end((err,res)=>{
+			if(err) { return console.log(err)}
+			TequilaServerActions.receiveTequila(res)
+		})
 	},
 	getHistorial: function () {
-		return obj.historial
+		superagent.get('http://127.0.0.1:6969/getHistorial')
+		.withCredentials()
+		.end((err,res) => {
+			if(err) { return console.log(err) }
+			console.log(res.body)
+		})
 	},
 	addTequilaToHistorial: function (tequila, username) {
-		tequila.fechaCompra = new Date().toUTCString()
-		tequila.username = username
-		obj.historial.push(tequila)
-		TequilaServerActions.receiveAddTequilaToHistorialResponse(obj.historial)
+		superagent.get('http://127.0.0.1:6969/addTequilaToHistorial')
+		.withCredentials()
+		.query({tequila,username})
+		.end((err,response)=>{
+			if(err) { return console.log(err) }
+			TequilaServerActions.receiveAddTequilaToHistorialResponse(response.body)
+		})
 	},
 	login : function(username,password){
-		let found = false
-		for(var i = 0; i < us.users.length; i++){
-			if(us.users[i].username == username && us.users[i].password == password){
-				found = true
-			}
-		}
-		UserServerActions.receiveLogin(found)
+		superagent.get('http://127.0.0.1:6969/login')
+		.withCredentials()
+		.query({username, password})
+		.end((err,res)=>{
+			if(err) { return console.log(err)}
+			UserServerActions.receiveLogin(res)
+		})
+		// UserServerActions.receiveLogin(found)
 	}
 }
 
