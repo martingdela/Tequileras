@@ -19,5 +19,11 @@ module.exports = {
 			actionType: AppConstants.RECEIVE_TEQUILERAS,
 			response: response
 		})
+	},
+	receiveTequilera: function(response){
+		AppDispatcher.receiveTequilera({
+			actionType: AppConstants.RECEIVE_TEQUILERA,
+			response: response
+		})
 	}
 }

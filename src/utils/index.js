@@ -8,15 +8,18 @@ var TequilaServerActions = require('../actions/TequilaServerActions')
 module.exports = {
 	getTequilera : function(marca) {
 		for(var i = 0 ; i < obj.tequileras.length; i++){
-			return obj.tequileras[i].marca == marca ? obj.tequileras[i] : {}
+			if(obj.tequileras[i].marca == marca){
+				TequilaServerActions.receiveTequilera(obj.tequileras[i])
+			}
 		}
+		
 	},
 	getTequileras : function(){
 		var tequileras = []
 		for(var i = 0; i < obj.tequileras.length; i++){
 			tequileras.push(obj.tequileras[i].marca)
 		}
-		console.log(tequileras)
+
 		TequilaServerActions.receiveTequileras(tequileras)
 	},
 	getTequila : function(sku){

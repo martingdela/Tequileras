@@ -23,5 +23,12 @@ module.exports = {
 		})
 
 		TequilaAPI.getTequileras()
+	},
+	getTequilera: function(marca){
+		AppDispatcher.handleGetTequilera({
+			actionType:  TequilaConstants.GET_TEQUILERA
+		})
+
+		TequilaAPI.getTequilera(marca)
 	}
 }

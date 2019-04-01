@@ -54,4 +54,22 @@ AppDispatcher.receiveTequileras = function(action){
 	})
 }
 
+/** 
+ * Get Tequilera
+*/
+
+AppDispatcher.handleGetTequilera = function(action) {
+	this.dispatch({
+		source: "GET_TEQUILERA",
+		action: action
+	})
+}
+
+AppDispatcher.receiveTequilera = function(action) {
+	this.dispatch({
+		souce: "RECEIVE_TEQUILERA",
+		action: action
+	})
+}
+
 module.exports = AppDispatcher

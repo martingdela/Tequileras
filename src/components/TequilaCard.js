@@ -1,7 +1,7 @@
 import React from "react";
 
 /** Element React Tabs */
-import { Card, Layout, Button } from 'element-react'
+import { Card, Layout } from 'element-react'
 
 class TequilaCard extends React.Component {
 	state = {

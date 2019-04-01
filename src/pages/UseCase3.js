@@ -7,20 +7,31 @@ import { Layout, Loading, Card, Button } from 'element-react'
 /** Components */
 import Tequilera from '../components/TequileraCard'
 
+/** Import FLUX */
+import TequilaActions from '../actions/TequilaActions'
+import TequilaStore from '../stores/TequilaStore'
+
 class UseCase extends React.Component {
 	state = {
 		fullscreen: true,
+		tequilera: {},
 		found: true
 	}
 
+	onChange = () => {
+		this.setState({tequilera: TequilaStore.getTequilera()})
+	}
+
 	componentDidMount = () => {
+		TequilaStore.addChangeListener(this.onChange)
+		TequilaActions.getTequilera(this.props.tequileraName)
 		setTimeout(() => {
 			this.setState({ fullscreen: false })
 		}, 3000)
 	}
 
 	render() {
-		const { fullscreen, found } = this.state
+		const { fullscreen, tequilera } = this.state
 		return (
 			<>
 				{fullscreen && <Loading fullscreen={true} />}
@@ -33,10 +44,10 @@ class UseCase extends React.Component {
 						}>
 
 							<Layout.Row span="24" type="flex" justify="center">
-								{!found ? (
+								{(tequilera.marca === undefined) ? (
 									<>
 										<Card>
-											<h1> No se encontro esa Tequilera </h1>
+											<h1>No se encontro esa Tequilera </h1>
 											<p> Revisa que hayas seleccionado un nombre valido </p>
 											<Link to="/">
 												<Button type="text">Regresar a la pagina principal</Button>
@@ -45,7 +56,7 @@ class UseCase extends React.Component {
 									</>
 								) : (
 									<>
-										<Tequilera />			
+										<Tequilera tequilera={tequilera}/>			
 									</>
 						)}
 							</Layout.Row>

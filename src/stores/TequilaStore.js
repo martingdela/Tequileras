@@ -8,6 +8,7 @@ var CHANGE_EVENT = 'change'
 var _store = {
 	tequila : {},
 	tequileras: [],
+	tequilera: {},
 	historial: [],
 	successhist: false,
 	editing: false
@@ -26,6 +27,9 @@ var TequilaStore = ObjectAssign({}, EventEmitter.prototype, {
 	getTequileras : function () {
 		return _store.tequileras
 	},
+	getTequilera : function() {
+		return _store.tequilera
+	},	
 	getHistorialSuccess : function() {
 		return _store.successhist
 	},
@@ -67,6 +71,16 @@ AppDispatcher.register(function(payload){
 
 		case AppConstants.RECEIVE_TEQUILERAS:
 			_store.tequileras = action.response
+			TequilaStore.emit(CHANGE_EVENT)
+			break
+
+		case AppConstants.GET_TEQUILERA:
+			_store.editing = true
+			TequilaStore.emit(CHANGE_EVENT)
+			break
+
+		case AppConstants.RECEIVE_TEQUILERA:
+			_store.tequilera = action.response
 			TequilaStore.emit(CHANGE_EVENT)
 			break
 

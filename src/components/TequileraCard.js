@@ -12,11 +12,17 @@ class TequileraCard extends React.Component {
 		tequilera: 'Gran Maestro Dobel S.A. de C.V.',
 		fundacion: '2009',
 		direccion: 'San Juan del Rio 222. Col. Falderos',
-		tequilas: [0,1,2,3,4]
+		tequilas: []
 	}
 
-	componentDidMount = () => {
-
+	componentWillReceiveProps = () => {
+		let {tequilera} = this.props
+		this.setState({
+			tequilera: tequilera.marca,
+			fundacion: tequilera.fundacion,
+			direccion: tequilera.direccion,
+			tequilas: tequilera.tequilas
+		})
 	}
 
 	render() {
@@ -40,7 +46,7 @@ class TequileraCard extends React.Component {
 									{tequilas.map((tequila,index)=>{
 										return (
 											<Carousel.Item key={index}>
-												<Tequila />
+												<Tequila tequila={tequila}/>
 											</Carousel.Item>
 										)
 									})}
