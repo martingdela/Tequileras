@@ -38,7 +38,7 @@ module.exports = {
 		.withCredentials()
 		.end((err,res) => {
 			if(err) { return console.log(err) }
-			console.log(res.body)
+			TequilaServerActions.getHistorialResponse(res.body)
 		})
 	},
 	addTequilaToHistorial: function (tequila, username) {

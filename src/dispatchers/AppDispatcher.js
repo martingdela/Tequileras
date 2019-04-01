@@ -90,4 +90,23 @@ AppDispatcher.receiveLogin = function(action) {
 	})
 }
 
+/**
+ * Get Historial
+ */
+
+AppDispatcher.handleGetHistorial = function(action) {
+	this.dispatch({
+		source: "GET_HISTORIAL",
+		action: action
+	})
+}
+
+AppDispatcher.handleGetHistorialResponse = function(action) {
+	this.dispatch({
+		source: "GET_HISTORIAL_RESPONSE",
+		action: action
+	})
+	alert('dispatcher')
+}
+
 module.exports = AppDispatcher

@@ -85,6 +85,16 @@ AppDispatcher.register(function(payload){
 			TequilaStore.emit(CHANGE_EVENT)
 			break
 
+		case AppConstants.GET_HISTORIAL:
+			_store.editing = true
+			TequilaStore.emit(CHANGE_EVENT)
+			break
+
+		case AppConstants.GET_HISTORIAL_RESPONSE:
+			_store.historial = action.response
+			TequilaStore.emit(CHANGE_EVENT)
+			break
+
 	}
 })
 

@@ -30,5 +30,12 @@ module.exports = {
 		})
 
 		TequilaAPI.getTequilera(marca)
+	},
+	getHistorial: function(){
+		AppDispatcher.handleGetHistorial({
+			actionType: TequilaConstants.GET_HISTORIAL
+		})
+
+		TequilaAPI.getHistorial()
 	}
 }

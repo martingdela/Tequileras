@@ -18,14 +18,6 @@ class NavBar extends React.Component {
 
 						</NavLink>
 					</Nav.Item>
-					<Nav.Item index="2">
-						<NavLink to="/historial" className="nav-link">
-							Historial
-							</NavLink>
-					</Nav.Item>
-					<Nav.Item index="3">
-						Mi perfil
-					</Nav.Item>
 				</Nav>
 
 			</>

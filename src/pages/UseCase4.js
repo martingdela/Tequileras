@@ -50,15 +50,22 @@ class UseCase extends React.Component {
 
 	componentDidMount = () => {
 		TequilaStore.addChangeListener(this.onChange)
-		this.setState({data: TequilaStore.getHistorial()})
-		this.setState({selectedTequila: TequilaStore.getHistorial()[0]})
+		TequilaActions.getHistorial()
 		setTimeout(() => {
 			this.setState({ fullscreen: false })
 		}, 3000)
 	}
 
 	onChange = () => {
-		this.setState({data: TequilaStore.getHistorial()})
+		var {username} = this.props
+		var data = []
+		TequilaStore.getHistorial().forEach((tequila)=>{
+			if(tequila.username == username){
+				data.push(tequila)
+			}
+		})
+		this.setState({data})
+		this.setState({selectedTequila: TequilaStore.getHistorial()[0]})
 	}
 
 	onCurrentChange = item => {

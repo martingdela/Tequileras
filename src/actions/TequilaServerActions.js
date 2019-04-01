@@ -25,5 +25,11 @@ module.exports = {
 			actionType: AppConstants.RECEIVE_TEQUILERA,
 			response: response
 		})
+	},
+	getHistorialResponse: function(response) {
+		AppDispatcher.handleGetHistorialResponse({
+			actionType: AppConstants.GET_HISTORIAL_RESPONSE,
+			response : response
+		})
 	}
 }

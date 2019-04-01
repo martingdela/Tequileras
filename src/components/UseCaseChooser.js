@@ -6,6 +6,7 @@ import {Tabs, Layout} from 'element-react'
 /** Import other components */
 import SKUForm from '../components/Forms/SKUForm'
 import TequileraForm from '../components/Forms/TequileraForm'
+import HistorialForm from '../components/Forms/HistorialForm'
 
 
 class UseCase extends React.Component {
@@ -23,6 +24,9 @@ class UseCase extends React.Component {
 							</Tabs.Pane>
 							<Tabs.Pane name="2" label="Conoce tu tequilera">
 								<TequileraForm />
+							</Tabs.Pane>
+							<Tabs.Pane name="3" label="Ve tu historial">
+								<HistorialForm />
 							</Tabs.Pane>
 					</Tabs>
 				</Layout.Col>

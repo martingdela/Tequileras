@@ -29,7 +29,9 @@ class App extends Component {
           ({match}) => <UseCase3 tequileraName={match.params.tequileraName}/>
         }/>
         {/** Use case 4 */}
-        <Route exact path="/historial" component={UseCase4}/>
+        <Route exact path="/historial/:username" component={ 
+          ({match}) => <UseCase4 username={match.params.username}/>
+        }/>
         
       </Router>
     );
