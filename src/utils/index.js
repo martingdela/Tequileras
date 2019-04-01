@@ -1,9 +1,10 @@
 /** Simulator */
 var fs = require('browserify-fs')
 var obj = require('./response.json')
+var us = require('./userresponse.json')
 /** Flux stuff */
 var TequilaServerActions = require('../actions/TequilaServerActions')
-// var TequileraActions = require('../actions/TequileraActions')
+var UserServerActions = require('../actions/UserServerActions')
 
 module.exports = {
 	getTequilera: function (marca) {
@@ -39,6 +40,15 @@ module.exports = {
 		tequila.username = username
 		obj.historial.push(tequila)
 		TequilaServerActions.receiveAddTequilaToHistorialResponse(obj.historial)
+	},
+	login : function(username,password){
+		let found = false
+		for(var i = 0; i < us.users.length; i++){
+			if(us.users[i].username == username && us.users[i].password == password){
+				found = true
+			}
+		}
+		UserServerActions.receiveLogin(found)
 	}
 }
 

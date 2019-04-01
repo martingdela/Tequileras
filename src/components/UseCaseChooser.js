@@ -7,6 +7,7 @@ import {Tabs, Layout} from 'element-react'
 import SKUForm from '../components/Forms/SKUForm'
 import TequileraForm from '../components/Forms/TequileraForm'
 
+
 class UseCase extends React.Component {
 	state = {
 
@@ -21,7 +22,7 @@ class UseCase extends React.Component {
 								<SKUForm/>
 							</Tabs.Pane>
 							<Tabs.Pane name="2" label="Conoce tu tequilera">
-								<TequileraForm tequileras={this.props.tequileras}/>
+								<TequileraForm />
 							</Tabs.Pane>
 					</Tabs>
 				</Layout.Col>

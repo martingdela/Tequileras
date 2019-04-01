@@ -67,8 +67,26 @@ AppDispatcher.handleGetTequilera = function(action) {
 
 AppDispatcher.receiveTequilera = function(action) {
 	this.dispatch({
-		souce: "RECEIVE_TEQUILERA",
+		source: "RECEIVE_TEQUILERA",
 		action: action
+	})
+}
+
+/**
+ * Login
+ */
+
+AppDispatcher.handleLogin = function(action) {
+	this.dispatch({
+		source: "LOGIN_USER",
+		action: action
+	})
+}
+
+AppDispatcher.receiveLogin = function(action) {
+	this.dispatch({
+		source: "LOGIN_USER_RESPONSE",
+		action : action
 	})
 }
 

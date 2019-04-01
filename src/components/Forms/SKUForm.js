@@ -1,13 +1,18 @@
 import React from "react";
 
 /** Element React Tabs */
-import {Form, Layout, Input, Button} from 'element-react'
+import {Form, Layout, Input, Button,Notification} from 'element-react'
 
 /** Router with React Router Dom */
 import {withRouter} from 'react-router-dom'
 
+/** Fluxie */
+import UserStore from '../../stores/UserStore'
+import UserActions from '../../actions/UserActions'
+
 class SKUForm extends React.Component {
 	state = {
+		inStore : false,
 		form : {
 			sku: 'xxxx-xxxx-xxxx-xxxx',
 			username: '',
@@ -44,12 +49,33 @@ class SKUForm extends React.Component {
 		}
 	}
 
+	componentDidMount = () => {
+		UserStore.addChangeListener(this.onChange)
+	}
+
+	onChange = () => {
+		this.setState({inStore: UserStore.isUserOnDB()})
+	}
+
 	handleSubmit = event => {
 		event.preventDefault()
 		this.refs.form.validate((valid)=>{
 			if(valid){
-				let path = '/tequila/'+this.state.form.sku+'/'+this.state.form.username
-				this.props.history.push(path)
+				UserActions.login(this.state.form.username,this.state.form.password)
+				setTimeout(()=>{
+					console.log(this.state.inStore)
+					if(UserStore.isUserOnDB()){
+						let path = '/tequila/'+this.state.form.sku+'/'+this.state.form.username
+						this.props.history.push(path)
+						UserStore.logout()
+					}else{
+						Notification({
+							title: "Error",
+							message: "Usuario no esta registrado",
+							type: "error"
+						})
+					}
+				},1000)
 			}
 		})
 	}
