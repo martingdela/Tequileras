@@ -1,4 +1,5 @@
-import React from "react"
+import React from "react";
+import './NavBar.css';
 
 /* React Router Dom Components */
 import { NavLink } from "react-router-dom"
@@ -7,19 +8,17 @@ import { NavLink } from "react-router-dom"
 import { Menu as Nav } from 'element-react'
 
 class NavBar extends React.Component {
+
 	render() {
 		return (
 			<>
-				<Nav theme="light" defaultActive="1" className="el-Nav-demo" mode="horizontal">
-
-					<Nav.Item index="1">
-						<NavLink to="/" className="nav-link">
-							<img style={{ width: "6em", height: "6em" }} src={process.env.PUBLIC_URL + "/img/brand-blackcolor.svg"} alt="Maestro Dobel" className="app-icon" />
-
+				<Nav style={{backgroundColor: '	#272727'}} theme="dark" defaultActive="1" className="el-Nav-demo" mode="horizontal" >
+					<Nav.Item index="1" >
+						<NavLink to="/" className="nav-link" >
+							<img style={{ width: "6em", height: "6em", marginTop: "-0.8em" }} src={process.env.PUBLIC_URL + "/img/brand-blackcolor.svg"} alt="Maestro Dobel" className="app-icon" />
 						</NavLink>
 					</Nav.Item>
 				</Nav>
-
 			</>
 		)
 	}

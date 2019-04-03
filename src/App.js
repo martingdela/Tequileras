@@ -15,7 +15,8 @@ import UseCase4 from './pages/UseCase4'
 class App extends Component {
   render() {
     return (
-      <Router>
+      <body style ={{backgroundColor: "#000"}}>
+      <Router >
         {/** Navigation Bar */}
         <NavBar/>
         {/** Homepage and use cases 2 and 3*/}
@@ -34,6 +35,7 @@ class App extends Component {
         }/>
         
       </Router>
+      </body>
     );
   }
 }

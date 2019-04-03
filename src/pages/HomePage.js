@@ -1,5 +1,4 @@
 import React from "react";
-
 /* Element React components */
 import { Layout, Carousel, Loading } from 'element-react'
 
@@ -7,6 +6,7 @@ import { Layout, Carousel, Loading } from 'element-react'
 import UseCaseChooser from '../components/UseCaseChooser'
 
 class HomePage extends React.Component {
+
 	state = {
 		images: ['DOBEL.png', 'humito.png', 'blanco.png', 'Reposado-.png', 'rojo.png'],
 		fullscreen: true,
@@ -21,14 +21,13 @@ class HomePage extends React.Component {
 	render() {
 
 		const { images, fullscreen } = this.state
-
 		return (
 			<>
 			{fullscreen && <Loading fullscreen={true}/>}
-				<Layout.Row gutter="10">
+				<Layout.Row style={{backgroundColor: "#131313", backgroundImage: "url(" + process.env.PUBLIC_URL + '/img/coolBack.png' + ")"}} gutter="10">
 					<Layout.Col span="24">
 						<div style={{ textAlign: "center" }} className="grid-content bg-purple">
-							<h1>Tequila Maestro Dobel</h1>
+							<h1 style={{color: "#ffffff"}}>Tequila Maestro Dobel</h1>
 							<Carousel interval="4000" indicatorPosition="outside" height="25rem">
 								{images.map((path, index) => {
 									return (
