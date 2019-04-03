@@ -63,3 +63,24 @@ label{
 .el-card{
 	background-color: #000 !important;
 }
+
+.el-table {
+	background-color: #121212 !important;
+}
+
+.el-dialog__header {
+	background-color: #323232 !important;
+}
+
+.el-dialog__body {
+	background-color: #191919 !important;
+	color: #fff !important;
+}
+
+.el-dialog__footer {
+	background-color: #323232 !important;
+}
+
+.el-dialog__title {
+	color: #fff !important;
+}
