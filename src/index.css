@@ -1,7 +1,7 @@
 body {
 	font-family: 'Open Sans', sans-serif;
-	background-color: #D3DCE6;
-	color: #324057;
+	background-color: #000;
+	color:  #fff;
   }
   .heading {
 	font-weight: 700;
@@ -14,11 +14,52 @@ a {
 	text-decoration: none;
 }
 
-a::hover {
-	color: #D3DCE6
+a:hover {
+	color: rgb(209, 209, 209)
 }
 
 .Tabs {
-	background-color: #D3DCE6
+	background-color: rgb(148, 148, 148)
 	;
+}
+
+button:hover{
+	background-color: #cccccc
+}
+
+label{
+	color: #cccccc !important
+}
+
+.el-button--primary {
+	color: #fff;
+	background-color: rgb(0, 0, 0) !important;
+	border-color: rgb(50, 50, 50) !important;
+}
+
+.el-tabs__nav-scroll {
+	background-color: #323232 !important;
+}
+
+.el-tabs__item.is-active {
+	color: #fff !important;
+}
+
+.el-tabs--border-card>.el-tabs__header .el-tabs__item.is-active {
+	background-color: #666 !important;
+}
+
+.el-tabs__item {
+	color: #999 !important;
+}
+
+.el-card__header {
+	background-color: #121212 !important;
+}
+.el-card__body {
+	background-color: #000 !important;
+}
+
+.el-card{
+	background-color: #000 !important;
 }

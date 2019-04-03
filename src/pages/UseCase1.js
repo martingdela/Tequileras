@@ -1,6 +1,7 @@
 import React from "react";
 import {Link} from 'react-router-dom'
-
+// import {Helmet} from 'react-helmet'
+ 
 /** Element React elements */
 import { Layout, Loading, Card, Button, Notification} from 'element-react'
 
@@ -53,6 +54,11 @@ class UseCase extends React.Component {
 		// console.log(tequilas.name == undefined)
 		return (
 			<>
+			{/* <Helmet>
+                <meta charSet="utf-8" />
+                <title>Valida tu botella</title>
+                <link rel="canonical" href="http://mysite.com/example" />
+            </Helmet> */}
 				{fullscreen && <Loading fullscreen={true} />}
 				<Layout.Col>
 					<Layout.Row span="24">

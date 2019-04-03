@@ -106,7 +106,6 @@ AppDispatcher.handleGetHistorialResponse = function(action) {
 		source: "GET_HISTORIAL_RESPONSE",
 		action: action
 	})
-	alert('dispatcher')
 }
 
 module.exports = AppDispatcher

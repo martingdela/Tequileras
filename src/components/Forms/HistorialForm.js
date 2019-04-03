@@ -77,7 +77,7 @@ class HistorialForm extends React.Component {
 		return (
 			<Layout.Row gutter="2">
 				<Layout.Col span="24">
-					<h1> Historial de Compra </h1>
+					<h1 className={"not-found"}> Historial de Compra </h1>
 					<p> Ingresa los datos que se te piden a continuacion </p>
 					<Form ref="form" model={this.state.form} rules={this.state.rules} className="es-MX" labelWidth="120" onSubmit={this.handleSubmit}>
 						<Form.Item prop="username" label="Nombre de Usuario">

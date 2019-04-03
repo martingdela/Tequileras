@@ -24,11 +24,11 @@ class HomePage extends React.Component {
 
 		return (
 			<>
-			{fullscreen && <Loading fullscreen={true}/>}
-				<Layout.Row gutter="10">
+			{/* {fullscreen && <Loading fullscreen={true}/>} */}
+				<Layout.Row gutter="10" style={{backgroundColor: "#131313", backgroundImage: "url(" + process.env.PUBLIC_URL + '/img/coolBack.png' + ")"}}>
 					<Layout.Col span="24">
 						<div style={{ textAlign: "center" }} className="grid-content bg-purple">
-							<h1>Tequila Maestro Dobel</h1>
+							<h1 style={{color: "#ffffff"}}>Tequila Maestro Dobel</h1>
 							<Carousel interval="4000" indicatorPosition="outside" height="25rem">
 								{images.map((path, index) => {
 									return (

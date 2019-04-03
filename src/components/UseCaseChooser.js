@@ -18,8 +18,8 @@ class UseCase extends React.Component {
 		return (
 			<Layout.Row gutter="10">
 				<Layout.Col span="24">
-					<Tabs type="border-card" activeName="1">
-							<Tabs.Pane name="1" label="Conoce tu tequila">
+					<Tabs style = {{color:"white", backgroundColor:"#191919", borderColor:"#191919"}} type="border-card" activeName="1">
+							<Tabs.Pane id="conoce" name="1" label="Conoce tu tequila">
 								<SKUForm/>
 							</Tabs.Pane>
 							<Tabs.Pane name="2" label="Conoce tu tequilera">

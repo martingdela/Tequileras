@@ -92,18 +92,18 @@ class SKUForm extends React.Component {
 				<Layout.Col span="24">
 					<h1> Informacion de mi botella </h1>
 					<p> Ingresa los datos que se te piden a continuacion </p>
-					<Form ref="form" model={this.state.form} rules={this.state.rules} className="es-MX" labelWidth="120" onSubmit={this.handleSubmit}>
+					<Form ref="form" model={this.state.form} rules={this.state.rules} className={"sku-form"} labelWidth="120" onSubmit={this.handleSubmit}>
 						<Form.Item prop="sku" label="SKU">
-							<Input value={this.state.form.sku} onChange={this.onChange.bind(this,'sku')}></Input>
+							<Input id="sku-sku" value={this.state.form.sku} onChange={this.onChange.bind(this,'sku')}></Input>
 						</Form.Item>
 						<Form.Item prop="username" label="Nombre de Usuario">
-							<Input value={this.state.form.username} onChange={this.onChange.bind(this,'username')}></Input>
+							<Input id="sku-username" value={this.state.form.username} onChange={this.onChange.bind(this,'username')}></Input>
 						</Form.Item>
 						<Form.Item prop="password" label="Contraseña">
-							<Input type={"password"} value={this.state.form.password} onChange={this.onChange.bind(this,'password')}></Input>
+							<Input id="sku-password" type={"password"} value={this.state.form.password} onChange={this.onChange.bind(this,'password')}></Input>
 						</Form.Item>
 						<Form.Item>
-							<Button type="primary" onClick={this.handleSubmit}> Submit </Button>
+							<Button className={"wow"} type="submit" onClick={this.handleSubmit}> Submit </Button>
 						</Form.Item>
 						
 					</Form>
