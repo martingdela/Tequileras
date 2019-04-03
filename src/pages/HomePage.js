@@ -2,6 +2,7 @@ import React from "react";
 
 /* Element React components */
 import { Layout, Carousel, Loading } from 'element-react'
+import {Typography} from '@material-ui/core'
 
 /* Import the bottle chooser component */
 import UseCaseChooser from '../components/UseCaseChooser'
@@ -27,8 +28,10 @@ class HomePage extends React.Component {
 			{/* {fullscreen && <Loading fullscreen={true}/>} */}
 				<Layout.Row gutter="10" style={{backgroundColor: "#131313", backgroundImage: "url(" + process.env.PUBLIC_URL + '/img/coolBack.png' + ")"}}>
 					<Layout.Col span="24">
-						<div style={{ textAlign: "center" }} className="grid-content bg-purple">
-							<h1 style={{color: "#ffffff"}}>Tequila Maestro Dobel</h1>
+						<div style={{ marginTop: "2%",textAlign: "center" }} className="grid-content bg-purple">
+							<Typography component="h2" variant="h3" style={{color:"white"}} gutterBottom>
+								Proyecto de Tequilas
+							</Typography>
 							<Carousel interval="4000" indicatorPosition="outside" height="25rem">
 								{images.map((path, index) => {
 									return (

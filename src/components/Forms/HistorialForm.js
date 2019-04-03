@@ -1,7 +1,8 @@
 import React from "react";
 
 /** Element React Tabs */
-import {Form, Layout, Input, Button,Notification} from 'element-react'
+import {Form, Layout, Input,Notification} from 'element-react'
+import {Button,Typography} from '@material-ui/core'
 
 /** Router with React Router Dom */
 import {withRouter} from 'react-router-dom'
@@ -77,8 +78,8 @@ class HistorialForm extends React.Component {
 		return (
 			<Layout.Row gutter="2">
 				<Layout.Col span="24">
-					<h1 className={"not-found"}> Historial de Compra </h1>
-					<p> Ingresa los datos que se te piden a continuacion </p>
+					<Typography variant="h3" className={"not-found"}> Historial de Compra </Typography>
+					<Typography variant="body1"> Ingresa los datos que se te piden a continuacion </Typography>
 					<Form ref="form" model={this.state.form} rules={this.state.rules} className="es-MX" labelWidth="120" onSubmit={this.handleSubmit}>
 						<Form.Item prop="username" label="Nombre de Usuario">
 							<Input value={this.state.form.username} onChange={this.onChange.bind(this,'username')}></Input>
@@ -87,7 +88,7 @@ class HistorialForm extends React.Component {
 							<Input type={"password"} value={this.state.form.password} onChange={this.onChange.bind(this,'password')}></Input>
 						</Form.Item>
 						<Form.Item>
-							<Button type="primary" onClick={this.handleSubmit}> Submit </Button>
+							<Button type="primary" className={"primary"} color="primary" variant="outlined" onClick={this.handleSubmit}> Submit </Button>
 						</Form.Item>
 						
 					</Form>

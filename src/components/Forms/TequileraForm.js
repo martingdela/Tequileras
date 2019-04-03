@@ -2,7 +2,8 @@
 import React from "react";
 
 /** Element React Tabs */
-import { Form, Layout, Button, Select } from 'element-react'
+import { Form, Layout, Select } from 'element-react'
+import {Button, Typography} from '@material-ui/core'
 
 /** Router with React Router Dom */
 import { withRouter } from 'react-router-dom'
@@ -52,10 +53,10 @@ class TequileraForm extends React.Component {
 
 			<Layout.Row gutter="2">
 				<Layout.Col span="24">
-					<h1> Informacion de mi Tequilera </h1>
-					<p> Selecciona una de las Tequileras a continuacion </p>
+					<Typography variant="h3"> Informacion de mi Tequilera </Typography>
+					<Typography variant="body1"> Selecciona una de las Tequileras a continuacion </Typography>
 					<Form ref="form" model={this.state.form} className="es-MX" labelWidth="120" onSubmit={this.handleSubmit}>
-						<Form.Item label="tequilera">
+						<Form.Item label="Tequilera">
 							<Select value={this.state.form.tequilera} onChange={this.onChange.bind(this,'tequilera')} placeholder="Tequileras">
 								{tequileras.map((tequila, index)=>(
 									<Select.Option label={tequila} value={index}></Select.Option>
@@ -63,7 +64,7 @@ class TequileraForm extends React.Component {
 							</Select>
 						</Form.Item>
 						<Form.Item>
-							<Button type="primary" onClick={this.handleSubmit}> Submit </Button>
+							<Button type="primary" color="primary" variant="outlined" onClick={this.handleSubmit}> Submit </Button>
 						</Form.Item>
 					</Form>
 				</Layout.Col>

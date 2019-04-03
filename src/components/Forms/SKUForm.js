@@ -1,7 +1,8 @@
 import React from "react";
 
 /** Element React Tabs */
-import {Form, Layout, Input, Button,Notification} from 'element-react'
+import {Form, Layout, Input,Notification} from 'element-react'
+import {Typography, Button} from '@material-ui/core'
 
 /** Router with React Router Dom */
 import {withRouter} from 'react-router-dom'
@@ -90,8 +91,8 @@ class SKUForm extends React.Component {
 		return (
 			<Layout.Row gutter="2">
 				<Layout.Col span="24">
-					<h1> Informacion de mi botella </h1>
-					<p> Ingresa los datos que se te piden a continuacion </p>
+					<Typography component="h2" variant="h3"> Informacion de mi botella </Typography>
+					<Typography variant="body1"> Ingresa los datos que se te piden a continuacion </Typography>
 					<Form ref="form" model={this.state.form} rules={this.state.rules} className={"sku-form"} labelWidth="120" onSubmit={this.handleSubmit}>
 						<Form.Item prop="sku" label="SKU">
 							<Input id="sku-sku" value={this.state.form.sku} onChange={this.onChange.bind(this,'sku')}></Input>
@@ -103,9 +104,8 @@ class SKUForm extends React.Component {
 							<Input id="sku-password" type={"password"} value={this.state.form.password} onChange={this.onChange.bind(this,'password')}></Input>
 						</Form.Item>
 						<Form.Item>
-							<Button className={"wow"} type="submit" onClick={this.handleSubmit}> Submit </Button>
+							<Button className={"wow primary"} variant="outlined" type="submit" color="primary" onClick={this.handleSubmit}> Submit </Button>
 						</Form.Item>
-						
 					</Form>
 				</Layout.Col>
 			</Layout.Row>

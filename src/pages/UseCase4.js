@@ -2,7 +2,8 @@ import React from "react";
 import { Link } from 'react-router-dom'
 
 /** Element React elements */
-import { Layout, Loading, Card, Button, Table, Dialog } from 'element-react'
+import { Layout, Loading, Table, Dialog } from 'element-react'
+import {Card, Typography, Button} from '@material-ui/core'
 
 /** Components */
 import TequilaCard from "../components/TequilaCard";
@@ -81,14 +82,14 @@ class UseCase extends React.Component {
 					<Layout.Row span="24">
 						<Card style={{ marginTop: "3%" }} className="box" header={
 							<div className="clearfix">
-								<span style={{ "lineHeight": "1rem" }}> <h2> Historial </h2> </span>
+								<span style={{ "lineHeight": "1rem" }}> <Typography variant="h3"> Historial </Typography> </span>
 							</div>
 						}>
 
 							<Layout.Row span="24" type="flex" justify="center">
 								{data.length === 0 ? (
 									<>
-										<Card>
+										<Card style={{margin: "5%"}}>
 											<h1> No tienes data en tu historial </h1>
 											<p> Sigue buscando data </p>
 											<Link to="/">

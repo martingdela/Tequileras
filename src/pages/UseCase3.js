@@ -2,7 +2,8 @@ import React from "react";
 import { Link } from 'react-router-dom'
 
 /** Element React elements */
-import { Layout, Loading, Card, Button } from 'element-react'
+import { Layout, Loading } from 'element-react'
+import { Card, CardContent, CardActions, Button, Typography } from '@material-ui/core'
 
 /** Components */
 import Tequilera from '../components/TequileraCard'
@@ -19,7 +20,7 @@ class UseCase extends React.Component {
 	}
 
 	onChange = () => {
-		this.setState({tequilera: TequilaStore.getTequilera()})
+		this.setState({ tequilera: TequilaStore.getTequilera() })
 	}
 
 	componentDidMount = () => {
@@ -39,26 +40,30 @@ class UseCase extends React.Component {
 					<Layout.Row span="24">
 						<Card style={{ marginTop: "3%" }} className="box" header={
 							<div className="clearfix">
-								<span style={{ "lineHeight": "1rem" }}> <h2> Resultado </h2> </span>
+								<span style={{ "lineHeight": "1rem" }}> <Typography variant="h3" color="white"> Resultado </Typography> </span>
 							</div>
 						}>
 
 							<Layout.Row span="24" type="flex" justify="center">
 								{(tequilera.marca === undefined) ? (
 									<>
-										<Card>
-											<h1>No se encontro esa Tequilera </h1>
-											<p> Revisa que hayas seleccionado un nombre valido </p>
-											<Link to="/">
-												<Button type="text">Regresar a la pagina principal</Button>
-											</Link>
+										<Card style={{ padding: "5%" }}>
+											<CardContent>
+												<Typography variant="h3">No se encontro esa Tequilera </Typography>
+												<Typography variant="body1"> Revisa que hayas seleccionado un nombre valido </Typography>
+											</CardContent>
+											<CardActions>
+												<Link to="/">
+													<Button color="primary" variant="outlined" type="text">Regresar a la pagina principal</Button>
+												</Link>
+											</CardActions>
 										</Card>
 									</>
 								) : (
-									<>
-										<Tequilera tequilera={tequilera}/>			
-									</>
-						)}
+										<>
+											<Tequilera tequilera={tequilera} />
+										</>
+									)}
 							</Layout.Row>
 						</Card>
 					</Layout.Row>

@@ -1,8 +1,8 @@
 import React from "react";
 
 /** Element React Tabs */
-import { Card, Layout, Button, Carousel } from 'element-react'
-
+import {Layout, Carousel } from 'element-react'
+import {Button, Card, Typography} from '@material-ui/core'
 /** Other components */
 import Tequila from './TequilaCard'
 
@@ -32,17 +32,17 @@ class TequileraCard extends React.Component {
 		return (
 			<Layout.Row>
 				<Layout.Col span={8} offset={0}>
-					<Card style={{ height: "90rem", width: "34rem" }} bodyStyle={{ padding: 0 }}>
+					<Card style={{ height: "83rem", width: "34rem" }} bodyStyle={{ padding: 0 }}>
 					<Layout.Row type="flex" justify="center">
 					<img alt="Tequila" style={{ width: "36rem"}} src={imgSrc} className="image" />
 					</Layout.Row>
 					<div style={{ padding: 14 }}>
-							<h3>{tequilera}</h3>
-							<p>Año de fundación: <b>{fundacion}</b></p>
-							<p>Direccion: <b>{direccion}</b></p>
+							<Typography variant="h3">{tequilera}</Typography>
+							<Typography variant="body1">Año de fundación: <b>{fundacion}</b></Typography>
+							<Typography variant="body1">Direccion: <b>{direccion}</b></Typography>
 							<div>
 								
-								<Carousel interval="4000" type="card" height="36rem" indicatorPosition="outside">
+								<Carousel interval="4000" type="card" height="30rem" indicatorPosition="outside">
 									{tequilas.map((tequila,index)=>{
 										return (
 											<Carousel.Item key={index}>

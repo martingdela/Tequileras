@@ -1,7 +1,8 @@
 import React from "react";
 
 /** Element React Tabs */
-import { Card, Layout } from 'element-react'
+import {Layout} from 'element-react'
+import {Card, CardActionArea, CardContent, CardHeader, Typography} from '@material-ui/core'
 
 class TequilaCard extends React.Component {
 	state = {
@@ -34,15 +35,17 @@ class TequilaCard extends React.Component {
 		return (
 			<Layout.Row>
 				<Layout.Col span={8} offset={0}>
-					<Card style={{ height: "35rem", width: "16rem" }} bodyStyle={{ padding: 0 }}>
-						<img alt="Tequila" style={{ width: "16rem" }} src={imgSrc} className="image" />
+					<Card style={{ height: "30rem", width: "16rem" }} bodyStyle={{ padding: 0 }}>
+					<img alt="Tequila" style={{ width: "16rem" }} src={imgSrc} className="image" />
+					<CardContent>
 						<div style={{ padding: 14 }}>
-							<h3>{name}</h3>
-							<p>Tequilera: <b>{tequilera}</b></p>
-							<p>Contenido: <b>{contenido}</b></p>
-							<p>Fabrica: <b>{fabrica}</b></p>
-							<p>Fecha de produccion: {fechaprod}</p>
+							<Typography variant="h5">{name}</Typography>
+							<Typography variant="body1">Tequilera: <b>{tequilera}</b></Typography>
+							<Typography variant="body1">Contenido: <b>{contenido}</b></Typography>
+							<Typography variant="body1">Fabrica: <b>{fabrica}</b></Typography>
+							<Typography variant="body1">Fecha de produccion: {fechaprod}</Typography>
 						</div>
+					</CardContent>
 					</Card>
 				</Layout.Col>
 			</Layout.Row>
