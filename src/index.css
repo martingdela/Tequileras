@@ -28,7 +28,7 @@ button:hover{
 }
 
 label{
-	color: #cccccc !important
+	color: #191919 !important
 }
 
 .el-button--primary {
@@ -84,3 +84,29 @@ label{
 .el-dialog__title {
 	color: #fff !important;
 }
+ 
+.MuiToolbar-root-37{
+	background-color: #121212 !important;
+}
+/*
+.MuiExpansionPanelSummary-root-81 {
+	background-color: #323232 !important;
+}
+
+.MuiTypography-body1-50 {
+	color: white !important;
+}
+
+.MuiExpansionPanelDetails-root-109 {
+	background-color: #131313 !important;
+}
+
+.MuiTypography-h3-55{
+    color: #fff !important;
+}
+*/
+.MuiButton-outlinedPrimary-119 {
+	margin-top: 1rem !important;
+    color: #999 !important;
+    border: 1px solid #aaa !important;
+} 
