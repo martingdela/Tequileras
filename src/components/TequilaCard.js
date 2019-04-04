@@ -24,14 +24,15 @@ class TequilaCard extends React.Component {
 				tequilera: tequila.marca,
 				contenido: tequila.contenido,
 				fabrica: tequila.fabrica,
-				fechaprod: tequila.fechaProduccion
+				fechaprod: tequila.fechaProduccion,
+				tipo: tequila.tipo
 			})
 		}
 	}
 
 	render() {
 
-		const { imgSrc, name, tequilera, contenido, fabrica, fechaprod } = this.state
+		const { imgSrc, name, tequilera, contenido, fabrica, fechaprod, tipo } = this.state
 
 		return (
 			<Layout.Row>
@@ -45,6 +46,7 @@ class TequilaCard extends React.Component {
 							<Typography variant="body1">Contenido: <b>{contenido}</b></Typography>
 							<Typography variant="body1">Fabrica: <b>{fabrica}</b></Typography>
 							<Typography variant="body1">Fecha de produccion: {fechaprod}</Typography>
+							<Typography variant="body1">Tipo: {tipo}</Typography>
 						</div>
 					</CardContent>
 					</Card>
