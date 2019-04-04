@@ -15,6 +15,7 @@ class TequilaCard extends React.Component {
 	}
 
 	componentWillReceiveProps = () => {
+		this.forceUpdate()
 		let {tequila} = this.props
 		console.log(tequila)
 		if(tequila !== undefined){

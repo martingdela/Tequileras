@@ -18,8 +18,10 @@ class UseCase extends React.Component {
 		fullscreen: true,
 		selectedTequila: {},
 		dialogVisible: false,
+		forceUpdate : false,
 		columns: [
 			{ label: "Marca", prop: "marca", width: 180, sortable: true },
+			{ label: "Nombre", prop: "name", width: 180, sortable: true },
 			{ label: "Submarca", prop: "submarca", width: 180, sortable: true },
 			{ label: "Fecha de Compra", prop: "fechaCompra", width: 180, sortable: true },
 			{ label: "Fecha de Fabricacion", prop: "fechaProduccion", width: 180, sortable: true },
@@ -36,15 +38,10 @@ class UseCase extends React.Component {
 		],
 		data: [{
 			marca: "Dobel",
+			name: "Wow",
 			submarca: "Maestro",
 			fechaCompra: "2019-20-21",
 			fechaFabricacion: "2019-1-1",
-			tipo: "Tequila"
-		}, {
-			marca: "Otro Dobel",
-			submarca: "Menos Maestro",
-			fechaCompra: "2019-20-21",
-			fechaFabricacion: "2018-01-01",
 			tipo: "Tequila"
 		}],
 	}
@@ -70,7 +67,9 @@ class UseCase extends React.Component {
 	}
 
 	onCurrentChange = item => {
-		this.setState({ dialogVisible: true, selectedTequila: item })
+		this.setState({ dialogVisible: true })
+		this.setState({selectedTequila: item})
+		this.forceUpdate()
 	}
 
 	render() {
@@ -106,22 +105,23 @@ class UseCase extends React.Component {
 												data={data}
 												onCurrentChange={item => this.onCurrentChange(item)}
 												border={true} />
-
 										</>
 									)}
 
 								<Dialog
-									title="Tequila"
 									visible={this.state.dialogVisible}
-									onCancel={() => this.setState({ dialogVisible: false })}
+									onCancel={() => this.setState({ dialogVisible: false, forceUpdate: false })}
 									style={{width: "20rem"}}
 									lockScroll={false}
 								>
 									<Dialog.Body>
-										<TequilaCard tequila={this.state.selectedTequila}/>
+										{/* {this.state.selectedTequila.map((tequila, index)=>( */}
+											<TequilaCard tequila={this.state.selectedTequila}/>
+										{/* // ))} */}
+										
 									</Dialog.Body>
 									<Dialog.Footer className="dialog-footer">
-										<Button onClick={() => this.setState({ dialogVisible: false })}>OK</Button>
+										<Button color="secondary" variant="outlined" onClick={() => this.setState({ dialogVisible: false })}>OK</Button>
 									</Dialog.Footer>
 								</Dialog>
 							</Layout.Row>
